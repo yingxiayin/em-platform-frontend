@@ -1,0 +1,174 @@
+@import '~antd/es/style/themes/default.less';
+
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0);
+}
+
+.avatar {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+
+.content {
+  padding: 0 50px;
+  margin-top: 64px;
+}
+
+.in_content {
+  min-height: 80vh;
+  margin: 2vw 0 0 0;
+  padding: 2vw;
+  background: #fff;
+}
+
+p {
+  margin-top: 1vw;
+}
+
+.left {
+  top: 0;
+  bottom: 0;
+}
+
+.right {
+  top: 0;
+  bottom: 0;
+}
+
+.image {
+  margin-top: 1vw;
+  display: inline-block;
+}
+
+.image_transfer {
+  position: relative;
+  width: 28vw;
+  height: 28vw;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #cccccc;
+}
+
+img {
+  position: absolute;
+  width: 90%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.image_text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  line-height: 28vw;
+}
+
+.transfer_button {
+  margin-top: 1vw;
+}
+
+.upload_transfer {
+  float: left;
+  width: 7.5vw;
+}
+
+.start_transfer {
+  position: relative;
+  display: inline-block;
+  width: 7.5vw; 
+  margin-left: 1vw;
+}
+
+.stop_transfer {
+  position: relative;
+  display: inline-block;
+  width: 7.5vw; 
+  margin-left: 1vw;
+}
+
+.download_transfer {
+  position: relative;
+  display: inline-block;
+  margin-left: 1vw;
+  width: 7.5vw;
+}
+
+.style_select_text {
+  display: inline-block;
+}
+
+.style_edit_button {
+  float: right;
+  margin-left: 2vw;
+}
+
+.style_select_button {
+  float: right;
+}
+
+.style {
+  margin-top: 1vw;
+}
+
+.card {
+  width: 8vw;
+  height: 8vw;
+}
+
+.card :global(.ant-card-actions) {
+  background-color: transparent;
+  border-top: 0px;
+}
+
+.card_selected {
+  width: 8vw;
+  height: 8vw;
+}
+
+.card_selected :global(.ant-card-actions) {
+  background-color: transparent;
+  border-top: 0px;
+}
+
+.card_selected {
+  border: 5px solid #1890ff;
+}
+
+.card_upload_style {
+  width: 8vw;
+  height: 8vw;
+}
+
+.card_upload_style {
+  position: relative;
+}
+
+.card_upload_style :global(.ant-card-body) {
+  padding: 0;
+  position: absolute;
+
+  transform: translate(17%, 17%);
+}
+
+.upload_style :global(.ant-upload.ant-upload-select-picture-card) {
+  width: 6vw;
+  height: 6vw;
+  margin: 0;
+}
+
+.footer {
+  text-align: center;
+}
