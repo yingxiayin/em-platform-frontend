@@ -68,7 +68,9 @@ const TransferPage: FC = () => {
   }, [uid]);
 
   useEffect(() => {
-    handleTransferring(false);
+    if (transferUrl !== '0') {
+      handleTransferring(false);
+    }
   }, [transferUrl]);
 
   useEffect(() => {
@@ -85,6 +87,7 @@ const TransferPage: FC = () => {
 
   const handleTransferClick = (): void => {
     handleTransferring(true);
+    console.log(isTransferring);
     dispatch({
       type: 'transfer/handleImageTransfer',
       payload: { uid: uid, rawUrl: rawUrl, styleUrl: styleUrl },
@@ -218,7 +221,7 @@ const TransferPage: FC = () => {
                       <Button
                         className={styles.stop_transfer}
                         type="primary"
-                        style={{ width: '7.5vw' }}
+                        style={{ width: '7.5vw', marginLeft: '1vw' }}
                         disabled
                       >
                         <StopOutlined />

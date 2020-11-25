@@ -36,7 +36,7 @@ const Transfer: ImgTranModelStore = {
   },
   effects: {
     //这里是做异步处理的
-    *updateRawImage({ rawUrl }, { call, put }) {
+    *updateRawImage({ rawUrl }, {  put }) {
       yield put({
         type: 'save',
         payload: { rawUrl: rawUrl },
