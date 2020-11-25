@@ -19,6 +19,7 @@ function UploadComponent(props: NewUploadProps) {
     accept,
     className,
     isButton,
+    disabled,
     buttonStyle,
     id,
     data,
@@ -37,11 +38,11 @@ function UploadComponent(props: NewUploadProps) {
   const beforeUpload = (file: any): boolean => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
-      message.error('You can only upload JPG/PNG file!');
+      message.error('只能上传 JPG/PNG 格式的图像');
     }
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
-      message.error('Image must smaller than 2MB!');
+      message.error('图像大小必须小于 2MB');
     }
     return isJpgOrPng && isLt2M;
   };
@@ -59,7 +60,7 @@ function UploadComponent(props: NewUploadProps) {
 
     if (info.file.status === 'done') {
 
-      console.log("图像上传成功");
+      console.log("原始图像上传成功");
       
       if (id === 'rawImage') {
         // 获取图像预览url
@@ -69,7 +70,7 @@ function UploadComponent(props: NewUploadProps) {
 
         dispatch({
           type: 'transfer/save',
-          payload: { rawUrl: imgStatus.imgUrl },
+          payload: { rawUrl: imgStatus.imgUrl, transferUrl: '0'},
         });
       }
 
@@ -100,6 +101,7 @@ function UploadComponent(props: NewUploadProps) {
     accept,
     className,
     isButton,
+    disabled,
     buttonStyle,
   };
 
@@ -107,10 +109,10 @@ function UploadComponent(props: NewUploadProps) {
     <div>
       {isButton ? (
         <Upload {...uploadPara}>
-          {loading ? (
+          {loading || disabled ? (
             <Button style={buttonStyle} disabled>
               <LoadingOutlined />
-              正在上传
+              等候进程
             </Button>
           ) : (
             <Button style={buttonStyle}>

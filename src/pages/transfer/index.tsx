@@ -19,7 +19,7 @@ import {
 import {
   OrderedListOutlined,
   UserOutlined,
-  VerticalAlignBottomOutlined,
+  ZoomInOutlined,
   RedoOutlined,
   DownOutlined,
   EditOutlined,
@@ -80,6 +80,9 @@ const TransferPage: FC = () => {
   }, [styleImageList]);
 
   useEffect(() => {
+    if (rawUrl === '0' || styleUrl === '0') {
+      handlePreForTrans(false);
+    }
     if (rawUrl !== '0' && styleUrl !== '0') {
       handlePreForTrans(true);
     }
@@ -87,7 +90,6 @@ const TransferPage: FC = () => {
 
   const handleTransferClick = (): void => {
     handleTransferring(true);
-    console.log(isTransferring);
     dispatch({
       type: 'transfer/handleImageTransfer',
       payload: { uid: uid, rawUrl: rawUrl, styleUrl: styleUrl },
@@ -184,13 +186,13 @@ const TransferPage: FC = () => {
                     {transferUrl !== '0' ? (
                       <img src={transferUrl} alt="image_transfer" />
                     ) : rawUrl !== '0' ? (
-                      <img src={rawUrl} alt="image_transfer" />
+                      <img src={rawUrl} alt="image_raw" />
                     ) : (
                       <div className={styles.image_text}>暂无上传</div>
                     )}
                   </div>
                 </div>
-                <div className={styles.transfer_button}>
+                <div className={styles.transfer_button_group}>
                   <UploadComponent
                     data={{ uid }}
                     id="rawImage"
@@ -201,6 +203,7 @@ const TransferPage: FC = () => {
                     isButton={true}
                     buttonStyle={{ width: '7.5vw' }}
                     accept=".jpg,.png"
+                    disabled={isTransferring}
                   />
                   {isTransferring ? (
                     <Button className={styles.start_transfer} disabled>
@@ -229,15 +232,24 @@ const TransferPage: FC = () => {
                       </Button>
                     </Tooltip>
                   )}
-                  <Button
-                    className={styles.download_transfer}
-                    type="primary"
-                    style={{ width: '7.5vw' }}
-                    disabled
+                  <Popover
+                    placement="rightBottom"
+                    content={
+                      rawUrl !== '0' ? (
+                        <div className={styles.small_raw_area}>
+                          <img className={styles.small_raw} src={rawUrl} alt="image_raw" />
+                        </div>
+                      ) : (
+                        <div>暂无上传</div>
+                      )
+                    }
+                    trigger="hover"
                   >
-                    <VerticalAlignBottomOutlined />
-                    下载结果
-                  </Button>
+                    <Button className={styles.show_raw} type="dashed" style={{ width: '7.5vw' }}>
+                      <ZoomInOutlined />
+                      查看原图
+                    </Button>
+                  </Popover>
                 </div>
               </div>
             </Col>
@@ -306,6 +318,7 @@ const TransferPage: FC = () => {
                                 isButton={false}
                                 buttonStyle={{}}
                                 accept=".jpg,.png"
+                                disabled={false}
                               />
                             </Card>
                           ) : isCardEditing ? (
@@ -313,7 +326,16 @@ const TransferPage: FC = () => {
                               className={styles.card}
                               key={item.id}
                               loading={false}
-                              cover={<img style={{ opacity: 0.3 }} src={item.url} alt="style" />}
+                              cover={
+                                <div>
+                                  <img
+                                    className={styles.card_image}
+                                    style={{ opacity: 0.3 }}
+                                    src={item.url}
+                                    alt="style"
+                                  />
+                                </div>
+                              }
                               actions={[
                                 <DeleteOutlined
                                   key="delete"
@@ -344,7 +366,15 @@ const TransferPage: FC = () => {
                                   hoverable={true}
                                   onClick={() => handleCardClick(item.id, item.url)}
                                   loading={false}
-                                  cover={<img src={item.url} alt="style" />}
+                                  cover={
+                                    <div>
+                                      <img
+                                        className={styles.card_image}
+                                        src={item.url}
+                                        alt="style"
+                                      />
+                                    </div>
+                                  }
                                 />
                               ) : (
                                 <Card
@@ -353,7 +383,15 @@ const TransferPage: FC = () => {
                                   hoverable={true}
                                   onClick={() => handleCardClick(item.id, item.url)}
                                   loading={false}
-                                  cover={<img src={item.url} alt="style" />}
+                                  cover={
+                                    <div>
+                                      <img
+                                        className={styles.card_image}
+                                        src={item.url}
+                                        alt="style"
+                                      />
+                                    </div>
+                                  }
                                 />
                               )}
                             </Popover>

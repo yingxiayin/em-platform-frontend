@@ -21,7 +21,6 @@ export interface ImgTranModelStore extends DvaModel<ImgTranModelState> {
     save: Reducer;
   };
   effects: {
-    updateRawImage: Effect;
     handleImageTransfer: Effect;
   };
 }
@@ -35,13 +34,6 @@ const Transfer: ImgTranModelStore = {
     transferUrl: '0',
   },
   effects: {
-    //这里是做异步处理的
-    *updateRawImage({ rawUrl }, {  put }) {
-      yield put({
-        type: 'save',
-        payload: { rawUrl: rawUrl },
-      });
-    },
     *handleImageTransfer({ payload }, { call, put }) {
       yield put({
         type: 'save',
@@ -58,7 +50,7 @@ const Transfer: ImgTranModelStore = {
     
         yield put({
           type: 'save',
-          payload: { transferUrl: transferUrl },
+          payload: { transferUrl: transferUrl, styleUrl: '0' },
         });
 
       }
