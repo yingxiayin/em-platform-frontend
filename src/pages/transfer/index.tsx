@@ -157,7 +157,7 @@ const TransferPage: FC = () => {
 
   const menu = (
     <Menu>
-      <Menu.Item onClick={() => handleLoginMenuClick()}>登出 Logout</Menu.Item>
+      <Menu.Item onClick={() => handleLoginMenuClick()}>Logout</Menu.Item>
     </Menu>
   );
 
@@ -177,10 +177,10 @@ const TransferPage: FC = () => {
                 <Affix>
                   <Button type="primary">
                     <OrderedListOutlined />
-                    风格迁移
+                    Cultural Style Transfer
                   </Button>
                 </Affix>
-                <p>请上传你的图片，之后进入右侧风格图片选择</p>
+                <p>Please upload your design draft (content image)</p>
                 <div className={styles.image}>
                   <div className={styles.image_transfer}>
                     {transferUrl !== '0' ? (
@@ -188,7 +188,7 @@ const TransferPage: FC = () => {
                     ) : rawUrl !== '0' ? (
                       <img src={rawUrl} alt="image_raw" />
                     ) : (
-                      <div className={styles.image_text}>暂无上传</div>
+                      <div className={styles.image_text}>Please upload your draft</div>
                     )}
                   </div>
                 </div>
@@ -208,7 +208,7 @@ const TransferPage: FC = () => {
                   {isTransferring ? (
                     <Button className={styles.start_transfer} disabled>
                       <LoadingOutlined />
-                      正在迁移
+                      Waiting
                     </Button>
                   ) : isEmptyPreForTrans ? (
                     <Button
@@ -217,7 +217,7 @@ const TransferPage: FC = () => {
                       onClick={() => handleTransferClick()}
                     >
                       <RedoOutlined />
-                      开始迁移
+                      Transfer
                     </Button>
                   ) : (
                     <Tooltip placement="topLeft" title="请先上传图片，并在右侧选择风格">
@@ -228,7 +228,7 @@ const TransferPage: FC = () => {
                         disabled
                       >
                         <StopOutlined />
-                        不可迁移
+                        Transfer
                       </Button>
                     </Tooltip>
                   )}
@@ -240,14 +240,14 @@ const TransferPage: FC = () => {
                           <img className={styles.small_raw} src={rawUrl} alt="image_raw" />
                         </div>
                       ) : (
-                        <div>暂无上传</div>
+                        <div>Please upload your draft</div>
                       )
                     }
                     trigger="hover"
                   >
                     <Button className={styles.show_raw} type="dashed" style={{ width: '7.5vw' }}>
                       <ZoomInOutlined />
-                      查看原图
+                      Draft
                     </Button>
                   </Popover>
                 </div>
@@ -258,11 +258,11 @@ const TransferPage: FC = () => {
                 <Affix>
                   <Button type="primary">
                     <OrderedListOutlined />
-                    风格学习
+                    Cultural Style Dataset
                   </Button>
                 </Affix>
                 <p className={styles.style_select_text}>
-                  选择或上传自己的风格图与你的图片结合，来生成定制图片
+                  Please upload style images, you can select one of the images for style transfer
                 </p>
                 <Button
                   id="style_edit_button"
@@ -273,7 +273,7 @@ const TransferPage: FC = () => {
                     handleCardEditing(!isCardEditing);
                   }}
                 >
-                  {isCardEditing ? '关闭编辑' : '风格编辑'}
+                  {isCardEditing ? 'Close' : 'Manage'}
                   <EditOutlined />
                 </Button>
                 <Dropdown overlay={menuStyle} placement="bottomRight" trigger={['click']}>
@@ -283,7 +283,7 @@ const TransferPage: FC = () => {
                     size="small"
                     className={styles.style_select_button}
                   >
-                    风格筛选
+                    Select
                     <DownOutlined />
                   </Button>
                 </Dropdown>
@@ -352,7 +352,7 @@ const TransferPage: FC = () => {
                                     <List
                                       dataSource={item.styleList}
                                       renderItem={item => (
-                                        <Tag color="blue">{item.style + ':' + item.num}</Tag>
+                                        <Tag color="blue">{item.style + ' ' + item.num*100 + '%'}</Tag>
                                       )}
                                     ></List>
                                   </p>
@@ -406,7 +406,7 @@ const TransferPage: FC = () => {
           </Row>
         </div>
       </Content>
-      <Footer className={styles.footer}>Web Design ©2020 Created by Ying Xiayin</Footer>
+      <Footer className={styles.footer}>Web Design ©2020 Created by Seth</Footer>
     </Layout>
   );
 };

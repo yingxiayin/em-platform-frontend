@@ -2,9 +2,7 @@
   "private": true,
   "scripts": {
     "start": "umi dev",
-    "prebuild": "rm -rf ../project/templates/index.html && rm -rf ../project/static/*",
     "build": "umi build",
-    "postbuild": "mv dist/index.html ../project/templates/ && mv dist/umi.js ../project/static/ && mv dist/umi.css ../project/static/",
     "test": "umi test",
     "lint": "eslint {src,mock,tests}/**/*.{ts,tsx} --fix",
     "precommit": "lint-staged"

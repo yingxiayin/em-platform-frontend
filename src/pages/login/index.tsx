@@ -41,7 +41,7 @@ const LoginPage: FC = () => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.title}>风格迁移工具</div>
+      <div className={styles.title}>Style Transfer Tool</div>
       <Form className={styles.from} name="basic">
         <Form.Item
           label="Username"

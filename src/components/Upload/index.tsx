@@ -112,12 +112,12 @@ function UploadComponent(props: NewUploadProps) {
           {loading || disabled ? (
             <Button style={buttonStyle} disabled>
               <LoadingOutlined />
-              等候进程
+              Waiting
             </Button>
           ) : (
             <Button style={buttonStyle}>
               <UploadOutlined />
-              上传图片
+              Upload
             </Button>
           )}
         </Upload>
@@ -126,12 +126,12 @@ function UploadComponent(props: NewUploadProps) {
           {loading ? (
             <div>
               <LoadingOutlined />
-              <div>正在上传</div>
+              <div>Waiting</div>
             </div>
           ) : (
             <div>
               <PlusOutlined />
-              <div>上传风格</div>
+              <div>Upload</div>
             </div>
           )}
         </Upload>
