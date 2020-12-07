@@ -12,9 +12,7 @@ const config: IConfig = {
     {
       path: '/transfer',
       wrappers: ['@/wrappers/LoginAuth'],
-      routes: [
-        { path: '/transfer/:id', component: './transfer' },
-      ],
+      routes: [{ path: '/transfer/:id', component: './transfer' }],
     },
   ],
   proxy: {
@@ -32,7 +30,7 @@ const config: IConfig = {
         antd: true,
         dva: true,
         dynamicImport: false,
-        title: '图片风格迁移工具',
+        title: 'Style Transfer Tool',
         dll: false,
 
         routes: {

@@ -116,7 +116,7 @@ const TransferPage: FC = () => {
     let changeList: ImgInfoType[] = [{ id: 0, url: '0', styleList: [] }];
 
     if (styleImageList.length === 0 && e.key !== '0') {
-      message.info('请先上传风格图');
+      message.info('Please upload style images');
     } else {
       switch (e.key) {
         case '1':
@@ -220,7 +220,10 @@ const TransferPage: FC = () => {
                       Transfer
                     </Button>
                   ) : (
-                    <Tooltip placement="topLeft" title="请先上传图片，并在右侧选择风格">
+                    <Tooltip
+                      placement="topLeft"
+                      title="Please upload a image, and then select one of the style images for style transfer"
+                    >
                       <Button
                         className={styles.stop_transfer}
                         type="primary"
@@ -352,7 +355,9 @@ const TransferPage: FC = () => {
                                     <List
                                       dataSource={item.styleList}
                                       renderItem={item => (
-                                        <Tag color="blue">{item.style + ' ' + item.num*100 + '%'}</Tag>
+                                        <Tag color="blue">
+                                          {item.style + ' ' + item.num * 100 + '%'}
+                                        </Tag>
                                       )}
                                     ></List>
                                   </p>

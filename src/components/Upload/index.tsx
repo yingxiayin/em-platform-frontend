@@ -38,13 +38,13 @@ function UploadComponent(props: NewUploadProps) {
   const beforeUpload = (file: any): boolean => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
-      message.error('只能上传 JPG/PNG 格式的图像');
+      message.error('Only images in JPG / PNG format can be uploaded');
     }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error('图像大小必须小于 2MB');
+    const isLt5M = file.size / 1024 / 1024 < 5;
+    if (!isLt5M) {
+      message.error('Image size must be less than 5MB');
     }
-    return isJpgOrPng && isLt2M;
+    return isJpgOrPng && isLt5M;
   };
 
   // 上传处理
@@ -60,7 +60,7 @@ function UploadComponent(props: NewUploadProps) {
 
     if (info.file.status === 'done') {
 
-      console.log("原始图像上传成功");
+      console.log('Raw image uploaded successfully');
       
       if (id === 'rawImage') {
         // 获取图像预览url
