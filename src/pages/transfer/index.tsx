@@ -154,7 +154,7 @@ const TransferPage: FC = () => {
 
   const menuStyle = (
     <Menu onClick={handleMenuClick}>
-      <Menu.Item key="1">Netherlands</Menu.Item>
+      <Menu.Item key="1">De stijl</Menu.Item>
       <Menu.Item key="2">Others</Menu.Item>
       <Menu.Divider />
       <Menu.Item key="0">All</Menu.Item>
@@ -274,7 +274,7 @@ const TransferPage: FC = () => {
                     className={styles.download_btn}
                     type="primary"
                     style={{ width: '9.5vw' }}
-                    disabled={!isTransferred}
+                    disabled={!isTransferred||isTransferring}
                     onClick={() => handleDownloadClick()}
                   >
                     <DownloadOutlined />
