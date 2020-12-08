@@ -26,6 +26,7 @@ import {
   DeleteOutlined,
   LoadingOutlined,
   StopOutlined,
+  DownloadOutlined,
 } from '@ant-design/icons';
 import { useSelector, useDispatch, useLocation, useRouteMatch } from 'dva';
 import { ConnectState, ImgTranModelState } from '@/models/connect';
@@ -45,6 +46,7 @@ const TransferPage: FC = () => {
   const match = useRouteMatch('/transfer/:id');
   const [isCardEditing, handleCardEditing] = useState<boolean>(false);
   const [isTransferring, handleTransferring] = useState<boolean>(false);
+  const [isTransferred, handleTransferResult] = useState<boolean>(false);
   const [cardSelectedId, handleCardSelected] = useState<number>(-1);
   const [isEmptyPreForTrans, handlePreForTrans] = useState<boolean>(false);
   const [currentStyleImageList, handleTypeSelected] = useState<ImgInfoType[]>([
@@ -70,6 +72,7 @@ const TransferPage: FC = () => {
   useEffect(() => {
     if (transferUrl !== '0') {
       handleTransferring(false);
+      handleTransferResult(true);
     }
   }, [transferUrl]);
 
@@ -94,6 +97,13 @@ const TransferPage: FC = () => {
       type: 'transfer/handleImageTransfer',
       payload: { uid: uid, rawUrl: rawUrl, styleUrl: styleUrl },
     });
+  };
+
+  const handleDownloadClick = (): void => {
+    console.log(
+      transferUrl.substring(transferUrl.lastIndexOf('/') + 1, transferUrl.length),
+      transferUrl,
+    );
   };
 
   const handleCardClick = (id: number, url: string): void => {
@@ -188,7 +198,9 @@ const TransferPage: FC = () => {
                     ) : rawUrl !== '0' ? (
                       <img src={rawUrl} alt="image_raw" />
                     ) : (
-                      <div className={styles.image_text}>Please upload your draft</div>
+                      <div className={styles.image_text}>
+                        Please upload your draft (content image)
+                      </div>
                     )}
                   </div>
                 </div>
@@ -243,17 +255,32 @@ const TransferPage: FC = () => {
                           <img className={styles.small_raw} src={rawUrl} alt="image_raw" />
                         </div>
                       ) : (
-                        <div>Please upload your draft</div>
+                        <div>Please upload your draft (content image)</div>
                       )
                     }
                     trigger="hover"
                   >
-                    <Button className={styles.show_raw} type="dashed" style={{ width: '7.5vw' }}>
+                    <Button className={styles.show_raw} type="dashed" style={{ width: '9.5vw' }}>
                       <ZoomInOutlined />
-                      Draft
+                      Content image
                     </Button>
                   </Popover>
                 </div>
+                <a
+                  href={transferUrl}
+                  download="transfer-res"
+                >
+                  <Button
+                    className={styles.download_btn}
+                    type="primary"
+                    style={{ width: '9.5vw' }}
+                    disabled={!isTransferred}
+                    onClick={() => handleDownloadClick()}
+                  >
+                    <DownloadOutlined />
+                    Download
+                  </Button>
+                </a>
               </div>
             </Col>
             <Col span={14}>
@@ -356,7 +383,10 @@ const TransferPage: FC = () => {
                                       dataSource={item.styleList}
                                       renderItem={item => (
                                         <Tag color="blue">
-                                          {item.style + ' ' + item.num * 100 + '%'}
+                                          {(item.style === 'netherlands' ? 'De stijl' : 'Others') +
+                                            ': ' +
+                                            item.num * 100 +
+                                            '%'}
                                         </Tag>
                                       )}
                                     ></List>
