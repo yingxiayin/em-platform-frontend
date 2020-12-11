@@ -13,6 +13,7 @@ export interface ImgTranModelState {
   styleId: number;
   styleUrl: string;
   transferUrl: string;
+  resultUrl: string;
 }
 
 export interface ImgTranModelStore extends DvaModel<ImgTranModelState> {
@@ -32,6 +33,7 @@ const Transfer: ImgTranModelStore = {
     styleId: 0,
     styleUrl: '0',
     transferUrl: '0',
+    resultUrl: '0',
   },
   effects: {
     *handleImageTransfer({ payload }, { call, put }) {

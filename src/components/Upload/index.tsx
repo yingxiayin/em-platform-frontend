@@ -60,7 +60,7 @@ function UploadComponent(props: NewUploadProps) {
 
     if (info.file.status === 'done') {
 
-      console.log('Raw image uploaded successfully');
+      console.log('Image uploaded successfully');
       
       if (id === 'rawImage') {
         // 获取图像预览url
@@ -84,6 +84,20 @@ function UploadComponent(props: NewUploadProps) {
         dispatch({
           type: 'image/fetchStyleList',
           payload: { uid: imgStatus.uid },
+        });
+      }
+
+      if (id === 'resultImage') {
+        // 获取图像预览url
+        imgStatus.imgUrl = info.file.response.resultUrl;
+        imgStatus.loading = false;
+        handleCardEditing(imgStatus.loading);
+        message.info(
+          '图片上传已完成。Picture upload has finished.',
+        );
+        dispatch({
+          type: 'transfer/save',
+          payload: { resultUrl: imgStatus.imgUrl },
         });
       }
     }

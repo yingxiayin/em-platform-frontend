@@ -3,23 +3,24 @@ import styles from './styles.less';
 import { Avatar, Button, Dropdown, Layout, Menu, Row, Col, Modal } from 'antd';
 import { OrderedListOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch, useRouteMatch } from 'dva';
-import TransferComponent from '@/components/Transfer';
 import UploadComponent from '@/components/Upload';
 import TimerComponent from '@/components/Timer';
 import FormComponent from '@/components/Form';
 import { ConnectState } from '@/models/connect';
 import router from 'umi/router';
-
 const { Header, Content, Footer } = Layout;
 
-const TransferPage: FC = () => {
-  const match = useRouteMatch('/transfer/:id');
+const NoTransferPage: FC = () => {
+  const match = useRouteMatch('/notransfer/:id');
   const { transfer } = useSelector<ConnectState, ConnectState>(state => state);
   const [isResultImageDone, handleResultImageDone] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { resultUrl } = transfer;
+
   const dispatch = useDispatch();
+
   let uid: string = '0';
+
   if (match !== null) {
     uid = match.params.id;
   }
@@ -32,22 +33,18 @@ const TransferPage: FC = () => {
 
   const handleLoginMenuClick = () => {
     window.location.href = '/login';
-    dispatch({
-      type: 'user/logout',
-      payload: {},
-    });
   };
 
   const handleNextStepBtn = () => {
     if (Number(uid) % 2 === 0) {
-      router.push('/notransfer/' + uid);
+      setIsModalVisible(true);
+    } else {
+      router.push('/transfer/' + uid);
       window.localStorage.clear();
       dispatch({
         type: 'transfer/save',
         payload: { resultUrl: '0' },
       });
-    } else {
-      setIsModalVisible(true);
     }
   };
 
@@ -77,9 +74,9 @@ const TransferPage: FC = () => {
                 <OrderedListOutlined />
                 Design Task
               </Button>
-              <p>请设计师根据荷兰用户的具体需求，设计一款工作环境中使用的荷兰风格口罩。</p>
+              <p>请设计师根据荷兰用户的具体需求，设计一款生活环境中使用的荷兰风格口罩。</p>
               <p>
-                The designer is asked to design a Dutch style mask used in the work environment
+                The designer is asked to design a Dutch style mask used in the living environment
                 according to the specific needs of Dutch users.
               </p>
             </Col>
@@ -96,7 +93,12 @@ const TransferPage: FC = () => {
       </Content>
       <Content className={styles.content}>
         <div className={styles.in_content}>
-          <TransferComponent />
+          <Button type="primary">
+            <OrderedListOutlined />
+            Design Board
+          </Button>
+          <p>请自由完成设计。</p>
+          <p>Please complete the design freely.</p>
         </div>
       </Content>
       <Content className={styles.result_content}>
@@ -114,7 +116,7 @@ const TransferPage: FC = () => {
             successful, please finish the form.
           </p>
           <UploadComponent
-            data={{ uid, type: 'transfer' }}
+            data={{ uid, type: 'notransfer' }}
             id="resultImage"
             className={styles.upload_res}
             listType="picture"
@@ -151,4 +153,4 @@ const TransferPage: FC = () => {
     </Layout>
   );
 };
-export default TransferPage;
+export default NoTransferPage;

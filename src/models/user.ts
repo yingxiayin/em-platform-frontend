@@ -44,12 +44,24 @@ const User: UserInfoModelStore = {
             type: 'save',
             payload: response,
           });
-          router.push('/transfer/' + response.data.uid);
+          // 登录销毁初始数据
+          yield put({
+            type: 'transfer/save',
+            payload: { resultUrl: '0' },
+          });
+          // 记录鉴权
+          window.localStorage.setItem('uid', response.data.uid);
+          // 完成跳转
+          if (response.data.uid % 2 === 0) {
+            router.push('/transfer/' + response.data.uid);
+          } else {
+            router.push('/notransfer/' + response.data.uid);
+          }
         }
       }
     },
     logout() {
-      localStorage.removeItem('uid');
+      window.localStorage.removeItem('uid');
       // 不是login界面的话跳转到login界面
     },
   },

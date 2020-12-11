@@ -11,8 +11,13 @@ const config: IConfig = {
     { path: '/login', component: './login' },
     {
       path: '/transfer',
-      wrappers: ['@/wrappers/LoginAuth'],
+      wrappers: ['@/component/Auth'],
       routes: [{ path: '/transfer/:id', component: './transfer' }],
+    },
+    {
+      path: '/notransfer',
+      wrappers: ['@/component/Auth'],
+      routes: [{ path: '/notransfer/:id', component: './notransfer' }],
     },
   ],
   proxy: {

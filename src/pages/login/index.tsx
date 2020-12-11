@@ -33,6 +33,7 @@ const LoginPage: FC = () => {
   // 发起请求
   const handleSubmit = (values: UserLoginType) => {
     console.log(values)
+    window.localStorage.clear();
     dispatch({
       type: 'user/login',
       payload: { ...values },
