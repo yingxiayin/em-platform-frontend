@@ -141,7 +141,7 @@ const TransferPage: FC = () => {
                   <OrderedListOutlined />
                   Form Pages
                 </Button>
-                <FormComponent />
+                <FormComponent type={true} />
                 <Button
                   className={styles.next_btn}
                   type="primary"
@@ -164,22 +164,24 @@ const TransferPage: FC = () => {
               Introduction
             </Button>
             <p>
-              该文化风格迁移工具分为左右两侧，左侧为风格迁移工具，右侧为风格学习工具。如操作所示，在右侧可以上传风格图片，识别其风格类型，并通过管理、筛选等操作管理风格库；在左侧可以上传待迁移的原始图片，在选中右侧的风格图后，可以实施风格迁移，同时可以查看原图或下载迁移结果辅助设计。
+              该文化风格迁移工具主要分为两个部分：左侧的风格迁移工具和右侧的风格图片管理工具。如视频所示，用户可以上传任意风格图片至右侧风格图片库。系统会对上传的风格图片进行风格分类并给出参考数值。用户可以筛选和管理风格图片库。用户可以上传任意内容图片至左侧，选择右侧的风格图片并点击“迁移”，系统将实施风格迁移，过程持续几秒钟。迁移完成后，用户可以查看原图或者下载迁移后的图片。用户可以使用任意图片进行风格迁移辅助设计，比如产品草图。
             </p>
             <p>
-              The cultural style transfer tool is divided into left and right sides, with style
-              transfer tool on the left and style learning tool on the right. As shown in the
-              operation, the style image can be uploaded on the right side to identify its style
-              type, and manage the style library through management, filtering and other operations;
-              the original image to be migrated can be uploaded on the left side, and the style
-              migration can be implemented after the style map on the right side is selected, and
-              the original image can be viewed or the migration result can be downloaded to assist
-              design.
+              The cultural style transfer tool is mainly divided into two parts: the style transfer
+              tool on the left side and the style image management tool on the right side. As shown
+              in the video, users can upload any style image to the style image library on the right
+              side. The system will classify the uploaded style image and provide a reference value.
+              Users can filter and manage the style image library. Users can upload any content
+              image on the left, select the style image on the right and click "Transfer". The
+              system will implement the style transfer, and the process lasts for several seconds.
+              After the transfer, users can view the original image or download the transferred
+              image. Users can use any image for style transfer to facilitate the design process,
+              such as product sketch.
             </p>
             <div className={styles.video}>
               <iframe
                 id="video"
-                src="http://culture.designist.cn/static/video.mp4"
+                src="http://culture.designist.cn/static/video/teach-video.mp4"
                 scrolling="no"
                 width="100%"
                 height="600vw"

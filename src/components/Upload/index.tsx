@@ -55,9 +55,15 @@ function UploadComponent(props: NewUploadProps) {
     if (info.file.status === 'uploading') {
       imgStatus.loading = true;
       handleCardEditing(true);
-      return;
+      if (id === 'rawImage') {
+        // 更新rawUrl = '0'
+        dispatch({
+          type: 'transfer/save',
+          payload: { rawUrl: '0' },
+        });
+      }
     }
-
+    
     if (info.file.status === 'done') {
 
       console.log('Image uploaded successfully');

@@ -6,19 +6,58 @@ import { ConnectState } from '@/models/connect';
 
 import { UserInfoModelState } from '@/models/connect';
 
-interface UserLoginType {
-  uid: string;
-  password: string;
+interface UserType {
+  type: boolean;
 }
 
-const FormComponent: FC = () => {
-  
+function FormComponent(props: UserType) {
+  const { type } = props;
+
   return (
     <div>
-      <p>表单二维码 1</p>
-      <p>表单二维码 2</p>
+      {type ? (
+        <>
+          <p>请完成问卷 / Please complete the questionnaire</p>
+          <div style={{ display: 'inline-block', textAlign: 'center' }}>
+            <img
+              src="http://culture.designist.cn/static/img/QR/CN-with AI.jpg"
+              alt="QR"
+              style={{ width: '10vw' }}
+            />
+            <p>问卷</p>
+          </div>
+          <div style={{ display: 'inline-block', textAlign: 'center' }}>
+            <img
+              src="http://culture.designist.cn/static/img/QR/EN-with AI.jpg"
+              alt="QR"
+              style={{ width: '10vw' }}
+            />
+            <p>questionnaire</p>
+          </div>
+        </>
+      ) : (
+        <>
+          <p>请完成问卷 / Please complete the questionnaire</p>
+          <div style={{ display: 'inline-block', textAlign: 'center' }}>
+            <img
+              src="http://culture.designist.cn/static/img/QR/CN-without AI.jpg"
+              alt="QR"
+              style={{ width: '10vw' }}
+            />
+            <p>问卷</p>
+          </div>
+          <div style={{ display: 'inline-block', textAlign: 'center' }}>
+            <img
+              src="http://culture.designist.cn/static/img/QR/EN-without AI.jpg"
+              alt="QR"
+              style={{ width: '10vw' }}
+            />
+            <p>questionnaire</p>
+          </div>
+        </>
+      )}
     </div>
   );
-};
+}
 
 export default FormComponent;

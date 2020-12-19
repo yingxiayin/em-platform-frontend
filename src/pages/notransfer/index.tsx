@@ -135,7 +135,7 @@ const NoTransferPage: FC = () => {
               <OrderedListOutlined />
               Form Pages
             </Button>
-            <FormComponent />
+            <FormComponent type={false}/>
             <Button
               className={styles.next_btn}
               type="primary"
