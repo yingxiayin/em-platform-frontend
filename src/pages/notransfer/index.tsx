@@ -86,7 +86,7 @@ const NoTransferPage: FC = () => {
                 Timer
               </Button>
               <p>请注意实验时间！/ Please pay attention to the experiment time!</p>
-              <TimerComponent allTime={5000} />
+              <TimerComponent allTime={1800000} />
             </Col>
           </Row>
         </div>
