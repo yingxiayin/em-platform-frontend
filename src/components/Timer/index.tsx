@@ -3,6 +3,7 @@ import { Modal } from 'antd';
 
 interface TimerProps {
   allTime: number;
+  handleTimeOut: any;
 }
 
 // 转化为时分秒
@@ -18,7 +19,7 @@ const formatSeconds = (second: Number): String => {
 
   let res = '';
   if (h !== '00') res += `${h} h`;
-  if (m !== '00') res += ` ${m} min`;
+  if (m !== '00') res += ` ${m} mins`;
   res += ` ${s}s`;
   return res;
 };
@@ -27,15 +28,15 @@ const config = {
   title: 'Attention',
   content: (
     <div>
-      <p>30分钟设计已结束，请按要求上传设计成果。</p>
-      <p>The 30 minutes design process has ended. Please upload the design results as required.</p>
+      <p>30分钟设计任务已结束，请按要求上传设计成果。</p>
+      <p>The 30-minutes design task has ended, please upload the design outcome as required.</p>
     </div>
   ),
   onOk() {},
 };
 
 function UploadComponent(props: TimerProps) {
-  const { allTime } = props;
+  const { allTime, handleTimeOut } = props;
   const [nowTime, setTime] = useState(() => {
     const time = window.localStorage.getItem('recordLastTime');
     if (Number(time) > 0) {
@@ -55,6 +56,7 @@ function UploadComponent(props: TimerProps) {
     setTrueTime(formatSeconds(nowTime / 1000));
     if (nowTime === 0) {
       setIsTimeOut(true);
+      handleTimeOut(true);
       Modal.info(config);
     }
   }, [nowTime]);
@@ -62,9 +64,9 @@ function UploadComponent(props: TimerProps) {
   return (
     <div>
       {isTimeOut ? (
-        <p>当前实验已结束 / The current experiment is over</p>
+        <p style={{ fontWeight: 'bold' }}>当前设计任务已结束 / The current design task has ended</p>
       ) : (
-        <p>当前实验时长还剩余 / Remaining time :{trueTime} </p>
+        <p style={{ fontWeight: 'bold' }}>任务时间剩余 / Remaining time :{trueTime} </p>
       )}
     </div>
   );

@@ -17,14 +17,18 @@ function FormComponent(props: UserType) {
     <div>
       {type ? (
         <>
-          <p>请完成问卷 / Please complete the questionnaire</p>
+          <p>请确定全组人员都完成了问卷，再点击进入下一步。</p>
+          <p>
+            Please make sure that the whole group has completed the questionnaire, and then click to
+            go to the next step
+          </p>
           <div style={{ display: 'inline-block', textAlign: 'center' }}>
             <img
               src="http://culture.designist.cn/static/img/QR/CN-with AI.jpg"
               alt="QR"
               style={{ width: '10vw' }}
             />
-            <p>问卷</p>
+            <p>问卷（中国设计师）</p>
           </div>
           <div style={{ display: 'inline-block', textAlign: 'center' }}>
             <img
@@ -32,19 +36,23 @@ function FormComponent(props: UserType) {
               alt="QR"
               style={{ width: '10vw' }}
             />
-            <p>questionnaire</p>
+            <p>questionnaire (for Dutch participant)</p>
           </div>
         </>
       ) : (
         <>
-          <p>请完成问卷 / Please complete the questionnaire</p>
+          <p>请确定全组人员都完成了问卷，再点击进入下一步。</p>
+          <p>
+            Please make sure that the whole group has completed the questionnaire, and then click to
+            go to the next step
+          </p>
           <div style={{ display: 'inline-block', textAlign: 'center' }}>
             <img
               src="http://culture.designist.cn/static/img/QR/CN-without AI.jpg"
               alt="QR"
               style={{ width: '10vw' }}
             />
-            <p>问卷</p>
+            <p>问卷（中国设计师）</p>
           </div>
           <div style={{ display: 'inline-block', textAlign: 'center' }}>
             <img
@@ -52,7 +60,7 @@ function FormComponent(props: UserType) {
               alt="QR"
               style={{ width: '10vw' }}
             />
-            <p>questionnaire</p>
+            <p>questionnaire (for Dutch participant)</p>
           </div>
         </>
       )}

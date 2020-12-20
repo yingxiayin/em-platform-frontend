@@ -35,7 +35,7 @@ const config: IConfig = {
         antd: true,
         dva: true,
         dynamicImport: false,
-        title: 'Style Transfer Tool',
+        title: 'Study of Cross-cultural Design with AI-supported Design Tool',
         dll: false,
 
         routes: {
