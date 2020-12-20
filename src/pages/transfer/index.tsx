@@ -126,19 +126,20 @@ const TransferPage: FC = () => {
                     manage the time.
                   </p>
                   <p style={{ fontWeight: 'bold' }}>
-                    如果您在设计过程中遇到系统错误或者运算超时，请刷新网页重试。If you encounter a
-                    system error or operation timeout during the design process, please refresh the
-                    web page and try again.
+                    如果您在设计过程中遇到系统错误或者运算超时，请刷新网页重试。任何情况下，请不要关闭网页或者返回，这将导致任务失败。
                   </p>
                   <p style={{ fontWeight: 'bold' }}>
-                    任何情况下，请不要关闭网页或者返回，这将导致任务失败。 In any case, please do
-                    not close the web page or go back, which will cause the task to fail.
+                    If you encounter a system error or operation timeout during the design process,
+                    please refresh the web page and try again. In any case, please do not close the
+                    web page or go back, which will cause the task to fail.
                   </p>
-                  <p style={{ fontWeight: 'bold' }}>
-                    请下载设计作品模板PSD文件！Please download this PSD file of design outcome!
-                    template
-                  </p>
-                  <p style={{ fontWeight: 'bold' }}>下载 / Download</p>
+                  <a
+                    style={{ fontWeight: 'bold' }}
+                    href="https://culture.designist.cn/static/img/transfer-template.psd"
+                    download="transfer-template"
+                  >
+                    下载 / Download
+                  </a>
                   <p style={{ fontWeight: 'bold' }}>
                     请注意任务时间！ Please pay attention to the time for the task!
                   </p>
