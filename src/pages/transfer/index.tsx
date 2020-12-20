@@ -136,7 +136,7 @@ const TransferPage: FC = () => {
                   <a
                     style={{ fontWeight: 'bold' }}
                     href="https://culture.designist.cn/static/img/transfer-template.psd"
-                    download="transfer-template"
+                    download="transfer-template.psd"
                   >
                     下载 / Download
                   </a>
